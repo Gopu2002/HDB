@@ -230,4 +230,4 @@ WinPrint.print();
 </script>
 </body>
 
-</html><?php  } ?>
+</html><?php   ?>

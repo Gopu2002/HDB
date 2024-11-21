@@ -32,7 +32,76 @@ header('location:logout.php');
 
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
-
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="index.php" target="_blank">
+<!--         <img src="logo/logo (24).ico" class="navbar-brand-img h-100" alt="main_logo">
+ -->        <span class="ms-1 font-weight-bold text-white"> <font face = "Comic sans MS" size = "4">Hello Dreamy Birds</font></span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <!-- <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main"> -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-gradient-primary" href="index.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons-round opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="./pages/admission_form.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons-round opacity-10">description</i></i>
+            </div>
+            <span class="nav-link-text ms-1">Admission Form</span>
+          </a>
+        </li>
+      <!--   <li class="nav-item">
+          <a class="nav-link text-white " href="./pages/edit-appform.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons-round opacity-10">edit_note</i>
+            </div>
+            <span class="nav-link-text ms-1">Edit Application</span>
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link text-white " href="./pages/adltr.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">verified</i>
+            </div>
+            <span class="nav-link-text ms-1">Admission Letter</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="./pages/fee.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">payments</i>
+            </div>
+            <span class="nav-link-text ms-1">Submit Fee</span>
+          </a>
+        </li>
+    
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="./pages/profile.php">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
+     <!--    <li class="nav-item">
+          <a class="nav-link text-white " href="./pages/sign-in.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">login</i>
+            </div>
+            <span class="nav-link-text ms-1">Sign In</span>
+          </a>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link text-white " href="logout.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -137,6 +206,176 @@ $name=$row['PostingDate'];
       </div>
    
     <br>
+
+ <br> <br><div class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
+data-open="click" data-menu="media-body text-left" data-col="2-columns">
+<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Admission Status</h6>
+
+      </div>
+      </div> <br>     <div class="content-body">
+        <!-- Revenue, Hit Rate & Deals -->
+  
+
+<?php 
+$uid=$_SESSION['uid'];
+$rtp =mysqli_query($con ,"SELECT AdminStatus from tbladmapplications where UserID='$uid'");
+$row=mysqli_fetch_array($rtp);
+$adsts=$row['AdminStatus'];
+if($row>0){
+
+?>
+
+        <div class="row" >
+          <div class="col-xl-10 col-lg-6 col-12">
+            <div class="card pull-up">
+              <div class="card-content">
+                   <a href="pages/admission_form.php">
+                <div class="card-body">
+                  <div class="media d-flex">
+                    <div class="media-body text-left">
+
+
+
+<?php if($adsts==1) {?>
+                      <h4 align="center">Your Application has been  selected</h4>
+                    <?php } else if($adsts==2) {?>
+                      <h4 align="center">Your Application has been  rejected</h4>
+                    <?php } else {?>
+                      <h4 align="center">Your Application has been pending with admin for review</h4>                    <?php } ?>
+
+                    </div>
+                    <div>
+         <i class="icon-file success font-large-2 float-right"></i>
+                    </div>
+                  </div>
+                  <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+
+                    <?php if($adsts=="") {?>
+                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div><br> <?php } ?><br>
+                          <?php if($adsts=="2") {?>
+                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div><br> <?php } ?><br>
+ <?php if($adsts=="1") {?>
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> <br><?php } ?>
+<br>
+                  </div>
+                </div>
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+<?php } else{?>
+     
+        <div class="row" >
+          <div class="col-xl-10 col-lg-6 col-12">
+            <div class="card pull-up">
+              <div class="card-content">
+                   <a href="pages/admission_form.php">
+                <div class="card-body">
+                  <div class="media d-flex">
+                    <div class="media-body text-left">
+                      <h4 align="center">You have not applied for addmision. Please fill the admission form.</h4>
+                    </div>
+                    <div>
+         <i class="icon-file success font-large-2 float-right"></i>
+                    </div>
+                  </div>
+                  <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> 
+                  </div>
+                </div>
+              </a>
+              </div>
+            </div>
+          </div>
+        </div><br>
+    <?php } ?>
+        
+
+
+<?php 
+if($adsts==1):
+$ret=mysqli_query($con,"select ID from  tblfees where tblfees.UserID='$uid'");
+$num=mysqli_num_rows($ret);
+if($num>0  )
+{ ?>
+
+       <div class="row" >
+          <div class="col-xl-10 col-lg-6 col-12">
+            <div class="card pull-up">
+              <div class="card-content">
+                   <a href="pages/fee.php">
+                <div class="card-body">
+                  <div class="media d-flex">
+                    <div class="media-body text-left">
+
+                      <h4 align="center" >Your Application has been  selected.Fee is also submitted</h4>
+                  
+
+                    </div>
+                    <div>
+         <i class="icon-file success font-large-2 float-right"></i>
+                    </div>
+                  </div>
+                  <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div><br>
+
+                  </div>
+                </div>
+              </a>
+              </div>
+            </div>
+          </div></div>   <br>
+<?php } else {?>
+             <div class="row" >
+          <div class="col-xl-10 col-lg-6 col-12">
+            <div class="card pull-up">
+              <div class="card-content">
+                   <a href="pages/fee.php">
+                <div class="card-body">
+                  <div class="media d-flex">
+                    <div class="media-body text-left">
+
+
+
+
+                      <h4 align="center">Your Application has been  selected and Please Submit your fee.</h4>
+                  
+
+                    </div>
+                    <div>
+         <i class="icon-file success font-large-2 float-right"></i>
+                    </div>
+                  </div>
+                  <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+
+                 
+                    <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+<br>
+                  </div><br>
+                </div>
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <?php }  endif;
+         ?>
+
+        
+        </div>
+       </div>
+
+
 
 
 

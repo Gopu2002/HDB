@@ -42,12 +42,13 @@ Hello Dreamy Birds | Login
 </head>
 
 <body class="bg-gray-200">
-<nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid ps-2 pe-0">
-          <a href="index.php">
-    <img src="logo/0.0.png" class="navbar-brand-img h-100" alt="main_logo" height="250" width="250">
-</a>
-
+          <img src="logo/0.0.png" class="navbar-brand-img h-100" alt="main_logo" height="250" width="250">
 
             <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href=""><h3>
              <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "A Steps Towards You.."</b></h3>
@@ -64,8 +65,9 @@ Hello Dreamy Birds | Login
             </div>
           </div>
         </nav>
-
-        
+        <!-- End Navbar -->
+      </div>
+    </div>
   </div>
   <main class="main-content  mt-0">
     <div class="page-header align-items-start min-vh-100" style="background-image: url('busy_tech.jpg');">
@@ -74,14 +76,18 @@ Hello Dreamy Birds | Login
         <div class="row">
           <div class="col-lg-4 col-md-8 col-12 mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
-             
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-secondary shadow-primary border-radius-lg py-3 pe-1">
+                  <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Login</h4>
+                
+                </div>
+              </div>
               <div class="card-body">
                 
                 <form  action="" name="login"  method="post">
                  
-   <h4 class="text-black font-weight-bolder text-center mt-0 mb-4">Login</h4>
    <div class="input-group input-group-outline mb-4">
-                        <input type="text" name="emailcont" id="email" class="form-control" placeholder=" Email or Phone Number"
+                        <input type="text" name="emailcont" id="email" class="form-control" placeholder="Registered Email or Contact Number"
                       required="true" ></div>
 
    <div class="input-group input-group-outline mb-4">
@@ -93,9 +99,13 @@ Hello Dreamy Birds | Login
                               <i class="la la-key"></i>
                             </div>
                             <div class="help-block font-small-3"></div>
-                      <div class="row px-3">
+                      <div class="row">
+                        <div class="col-6 col-sm-6 col-md-6">
                           <button type="submit" name="login" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i> Login</button>
-                       
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6">
+                          <a href="pages/signup.php" class="btn btn-success btn-lg btn-block" name="login" type="text"><i class="ft-unlock"></i> Register</a>
+                        </div>
                       </div>
                     
   
@@ -135,30 +145,54 @@ Hello Dreamy Birds | Login
       </footer>
     </div>
   </main>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  
-<script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <script src="app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"
-  type="text/javascript"></script>
-  <script src="app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
-  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
-  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
+ <!-- Core JS Files -->
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
 
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+<script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+<script src="app-assets/vendors/js/forms/validation/jqBootstrapValidation.js" type="text/javascript"></script>
+<script src="app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
+<script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
+<script src="app-assets/js/core/app.js" type="text/javascript"></script>
+<script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+<script src="app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
+
+<script>
+  // Initialize Scrollbar
+  var win = navigator.platform.indexOf('Win') > -1;
+  if (win && document.querySelector('#sidenav-scrollbar')) {
+    var options = {
+      damping: '0.5'
     }
-  </script>
+    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  }
+
+  // Detect whether input is a phone number or email and format accordingly
+  document.getElementById('email').addEventListener('input', function (e) {
+    let input = e.target.value;
+
+    // Check if the input is digits only (likely a phone number)
+    if (/^\d*$/.test(input)) {
+      input = input.replace(/\D/g, ''); // Remove all non-digit characters
+      let formatted = '';
+
+      if (input.length > 0) {
+        formatted = '(' + input.substring(0, 3);
+      }
+      if (input.length >= 4) {
+        formatted += ') ' + input.substring(3, 6);
+      }
+      if (input.length >= 7) {
+        formatted += '-' + input.substring(6, 10);
+      }
+
+      e.target.value = formatted;
+    }
+  });
+</script>
+
   <!-- Github buttons -->
 <!--   <script async defer src="https://buttons.github.io/buttons.js"></script>
  -->  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

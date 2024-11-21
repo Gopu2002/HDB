@@ -70,24 +70,35 @@ echo "<script>alert('This email or Contact Number already associated with anothe
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
 
-<script type="text/javascript">
-function checkpass()
-{
-if(document.signup.password.value!=document.signup.repeatpassword.value)
-{
-alert('Password and Repeat Password field does not match');
-document.signup.repeatpassword.focus();
-return false;
-}
-return true;
-} 
+  <script type="text/javascript">
+  // Password Validation Function
+  function checkpass() {
+    const password = document.signup.password.value;
+    const repeatPassword = document.signup.repeatpassword.value;
+
+    // Password regex validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (!password.match(passwordRegex)) {
+      alert('Password must contain at least one uppercase letter, one lowercase letter, one special character, and must be at least 8 characters long.');
+      document.signup.password.focus();
+      return false;
+    }
+
+    if (password !== repeatPassword) {
+      alert('Password and Repeat Password fields do not match.');
+      document.signup.repeatpassword.focus();
+      return false;
+    }
+
+    return true;
+  }
 
 </script>
 
 </head>
 
 <body class="">
-
   <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
       <div class="col-12">
@@ -95,6 +106,10 @@ return true;
         <nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid ps-2 pe-0">
           <img src="logo/0.0.png" class="navbar-brand-img h-100" alt="main_logo" height="250" width="250">
+
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href=""><h3>
+             <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Make Your SKY Boundriesless....."</b></h3>
+            </a>
             <button class="navbar-toggler shadow-danger ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
                 <span class="navbar-toggler-bar bar1"></span>
@@ -124,7 +139,7 @@ return true;
               <div class="card card-plain">
                 <div class="card-header">
                   <h4 class="font-weight-bolder">Sign Up</h4>
-                  <p class="mb-0">Enter your details here.</p>
+                  <p class="mb-0">Fillup Your Details</p>
                 </div>
                 <div class="card-body">
                        <form  method="post" name="signup" onSubmit="return checkpass();">
@@ -153,13 +168,14 @@ return true;
                        
                       </div>
                           <fieldset class="input-group input-group-outline mb-4">
-                        <input type="number" name="contactno" id="contactno" class="form-control input-lg"
-                        placeholder="Contact Number" required="true" maxlength="10" tabindex="3" required data-validation-required-message="Please enter display name.">
-                        <div class="form-control-position">
-                          <i class="ft-user"></i>
-                        </div>
-                        <div class="help-block font-small-3"></div>
-                      </fieldset>
+                            <input type="text" name="contactno" id="contactno" class="form-control input-lg"
+                            placeholder="Contact Number" required="true" maxlength="14" tabindex="3" 
+                            pattern="\(\d{3}\) \d{3}-\d{4}" title="Format: (123) 456-7890">
+                          <div class="form-control-position">
+                            <i class="ft-user"></i>
+                          </div>
+                          <div class="help-block font-small-3"></div>
+                        </fieldset>
                           <fieldset class="input-group input-group-outline mb-4">
                         <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address"
                         tabindex="4" required="true" required data-validation-required-message="Please enter email address.">
@@ -192,9 +208,21 @@ return true;
                         </div>
                       </div>
                 
-                        
+                      <div class="row">
+                        <div class="col-6 col-sm-6 col-md-6">
                           <button type="submit" name="submit" class="btn btn-success btn-lg btn-block"><i class="ft-user"></i> Register</button>
-                        
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6">
+                          <a href="../login.php" class="btn btn-danger btn-lg btn-block"><i class="ft-unlock"></i> Login</a>
+
+                        </div>
+                         <div class="col-6 col-sm-6 col-md-6">
+                          
+
+                        </div>
+
+
+                      </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
@@ -210,32 +238,49 @@ return true;
       </div>
     </section>
   </main>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  <!-- Core JS Files -->
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script>
+  var win = navigator.platform.indexOf('Win') > -1;
+  if (win && document.querySelector('#sidenav-scrollbar')) {
+    var options = {
+      damping: '0.5'
     }
-  </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
-   <script src="../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <script src="../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"
-  type="text/javascript"></script>
-  <script src="../app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
-  <script src="../app-assets/js/core/app-menu.js" type="text/javascript"></script>
-  <script src="../app-assets/js/core/app.js" type="text/javascript"></script>
-  <script src="../app-assets/js/scripts/customizer.js" type="text/javascript"></script>
-  <script src="../app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
+    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  }
+
+  // JavaScript for auto-formatting phone number
+  document.getElementById('contactno').addEventListener('input', function (e) {
+    let input = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
+    let formatted = '';
+    
+    if (input.length > 0) {
+      formatted = '(' + input.substring(0, 3);
+    }
+    if (input.length >= 4) {
+      formatted += ') ' + input.substring(3, 6);
+    }
+    if (input.length >= 7) {
+      formatted += '-' + input.substring(6, 10);
+    }
+    e.target.value = formatted;
+  });
+</script>
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
+<script src="../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+<script src="../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js" type="text/javascript"></script>
+<script src="../app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
+<script src="../app-assets/js/core/app-menu.js" type="text/javascript"></script>
+<script src="../app-assets/js/core/app.js" type="text/javascript"></script>
+<script src="../app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+<script src="../app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
+
 </body>
 
 </html>
