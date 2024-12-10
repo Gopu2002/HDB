@@ -75,7 +75,7 @@ $userpic=md5($upic).$extension;
 $tc=md5($tc).$extensiontc;
 $tm=md5($tenmarksheet).$extensiontm;
 $twm=md5($twlevemaksheet).$extensiontwm;
-if($gramarksheet!=""){
+if($gramarkshee!=""){
 $gra=md5($gramarksheet).$extensiongra;
 } else { $gra="";}
 
